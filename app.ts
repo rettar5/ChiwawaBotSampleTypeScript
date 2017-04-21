@@ -4,4 +4,5 @@ import { ChiwawaConfig } from './ChiwawaConfig';
 const config = new ChiwawaConfig();
 
 const bot = new SampleBot(config);
+bot.setupParrot();
 bot.start();
