@@ -17,5 +17,21 @@ export class ChiwawaConfig {
         port: '3000'
     };
 
+    // インスタンス
+    private static _instance: ChiwawaConfig;
+
     constructor() {}
+
+    /**
+     * インスタンスの取得
+     */
+    public static getInstance(): ChiwawaConfig
+    {
+        if (!this._instance) {
+            this._instance = new ChiwawaConfig();
+        }
+
+        // 生成済みのインスタンスを返す
+        return this._instance;
+    }
 }

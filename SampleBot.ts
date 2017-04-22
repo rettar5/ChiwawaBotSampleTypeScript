@@ -7,8 +7,9 @@ export class SampleBot {
     private app;
     private config: ChiwawaConfig;
 
-    constructor(config: ChiwawaConfig) {
-        this.config = config;
+    constructor() {
+        this.config = ChiwawaConfig.getInstance();
+
         // Webサーバインスタンス化
         this.app = express();
 
