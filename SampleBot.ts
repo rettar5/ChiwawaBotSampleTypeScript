@@ -30,13 +30,7 @@ export class SampleBot {
             const body = request.body;
             console.dir(body);
             // メッセージを投稿
-            this.postMessage(this.config.protocol,
-                this.config.companyId,
-                this.config.domain,
-                this.config.apiToken,
-                body.message.groupId,
-                body.message.text,
-                (error, response, body) => {
+            this.postMessage(body.message.groupId, body.message.text, (error, response, body) => {
                     // メッセージ投稿成功
                     console.log('Post succeed!!');
                     console.dir(body);
@@ -75,27 +69,19 @@ export class SampleBot {
     /**
      * 非同期で知話輪にメッセージを投稿
      *
-     * @param protocol      アクセスプロトコル
-     * @param companyId     知話輪企業ID
-     * @param domain        知話輪ドメイン
-     * @param token         知話輪APIトークン
      * @param groupId       投稿先グループID
      * @param text          投稿するメッセージ本文
      * @param success       メッセージ投稿成功時のコールバック
      * @param failure       メッセージ投稿失敗時のコールバック
      */
-    private postMessage(protocol: string,
-                        companyId: string,
-                        domain: string,
-                        token: string,
-                        groupId: string,
+    private postMessage(groupId: string,
                         text: string,
                         success: (error, response, body) => void,
                         failure: (error, response, body) => void): void {
         const options = {
-            uri: this.generatePostMessageUri(protocol, companyId, domain, groupId),
+            uri: this.generatePostMessageUri(groupId),
             headers: {
-                'X-Chiwawa-API-Token': token
+                'X-Chiwawa-API-Token': this.config.apiToken
             },
             json: {
                 'text': text
@@ -114,16 +100,10 @@ export class SampleBot {
     /**
      * メッセージ投稿APIのURIを生成
      *
-     * @param protocol       アクセスプロトコル
-     * @param companyId     知話輪企業ID
-     * @param domain        知話輪ドメイン
      * @param groupId       投稿先グループID
      * @returns {string}    URI
      */
-    private generatePostMessageUri(protocol: string,
-                                   companyId: string,
-                                   domain: string,
-                                   groupId: string): string {
-        return protocol + '://' + companyId + '.' + domain + '/api/public/v1/groups/' + groupId + '/messages';
+    private generatePostMessageUri(groupId: string): string {
+        return this.config.protocol + '://' + this.config.companyId + '.' + this.config.domain + '/api/public/v1/groups/' + groupId + '/messages';
     }
 }

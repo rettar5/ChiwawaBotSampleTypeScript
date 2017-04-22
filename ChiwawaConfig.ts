@@ -1,16 +1,16 @@
 export class ChiwawaConfig {
-    protocol = 'https';
-    domain = 'chiwawa.one';
+    readonly protocol = 'https';
+    readonly domain = 'chiwawa.one';
     // 企業ID
-    companyId = '************************************';
+    readonly companyId = '************************************';
     // ボット用ユーザID
-    botUserId = '********************';
+    readonly botUserId = '********************';
     // APIトークン
-    apiToken = '********************************';
+    readonly apiToken = '********************************';
     // Webhook検証URL
-    verifyToken = '********************************';
+    readonly verifyToken = '********************************';
     // Webhook受付サーバ設定
-    server = {
+    readonly server = {
         // Webhook受付エンドポイント
         path: '/ChiwawaBotSample',
         // Webhook受付ポート
