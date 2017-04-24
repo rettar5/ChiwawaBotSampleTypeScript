@@ -6,5 +6,5 @@ $ cd ChiwawaBotSampleTypeScript
 $ npm install
 $ npm install -g typescript
 $ vim ChiwawaConfig.ts    # トークンその他諸々を設定
-$ npm run start
+$ npm start
 ```
