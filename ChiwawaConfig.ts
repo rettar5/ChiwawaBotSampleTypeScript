@@ -1,6 +1,7 @@
 export class ChiwawaConfig {
     readonly protocol = 'https';
     readonly domain = 'chiwawa.one';
+    readonly chiwawaBaseUrl = "/api/public/v1";
     // 企業ID
     readonly companyId = '************************************';
     // ボット用ユーザID

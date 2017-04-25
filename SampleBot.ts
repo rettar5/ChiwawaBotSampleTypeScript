@@ -105,6 +105,14 @@ export class SampleBot {
      * @returns {string}    URI
      */
     private generatePostMessageUri(groupId: string): string {
-        return this.config.protocol + '://' + this.config.companyId + '.' + this.config.domain + '/api/public/v1/groups/' + groupId + '/messages';
+        return this.config.protocol
+            + '://'
+            + this.config.companyId
+            + '.'
+            + this.config.domain
+            + this.config.chiwawaBaseUrl
+            + '/groups/'
+            + groupId
+            + '/messages';
     }
 }
