@@ -48,7 +48,7 @@ export class SampleBot {
      * Webhook受付用サーバの起動
      */
     start(): void {
-        this.app.listen(process.env.PORT || this.config.server.port);
+        this.app.listen(this.config.server.port);
     }
 
     /**

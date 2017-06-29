@@ -3,19 +3,19 @@ export class ChiwawaConfig {
     readonly domain = 'chiwawa.one';
     readonly chiwawaBaseUrl = '/api/public/v1';
     // 企業ID
-    readonly companyId = '************************************';
+    readonly companyId = process.env.CBSTS_COMPANY_ID || '************************************';
     // ボット用ユーザID
-    readonly botUserId = '********************';
+    readonly botUserId = process.env.CBSTS_BOT_USER_ID || '********************';
     // APIトークン
-    readonly apiToken = '********************************';
+    readonly apiToken = process.env.CBSTS_API_TOKEN || '********************************';
     // Webhook検証URL
-    readonly verifyToken = '********************************';
+    readonly verifyToken = process.env.CBSTS_VERIFY_TOKEN || '********************************';
     // Webhook受付サーバ設定
     readonly server = {
         // Webhook受付エンドポイント
         path: '/ChiwawaBotSample',
         // Webhook受付ポート
-        port: '3000'
+        port: process.env.CBSTS_PORT || process.env.PORT || '3000'
     };
 
     // インスタンス
